@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="About [Your Name] — A full-stack developer and UI/UX designer passionate about building exceptional digital experiences." />
+  <title>About — [Your Name]</title>
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⬛</text></svg>" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div data-cursor></div>
+  <div data-cursor-dot></div>
+
+  <!-- Navigation -->
+  <nav class="nav nav--dark" id="main-nav" role="navigation" aria-label="Main navigation">
+    <a href="index.html" class="nav__logo" aria-label="Home">
+      <span class="nav__logo-initials">Y—N</span>
+    </a>
+    <ul class="nav__links" role="list">
+      <li><a href="index.html" class="nav__link" id="nav-home">Home</a></li>
+      <li><a href="works.html" class="nav__link" id="nav-works">Works</a></li>
+      <li><a href="about.html" class="nav__link active" id="nav-about">About</a></li>
+      <li><a href="contact.html" class="nav__link" id="nav-contact">Contact</a></li>
+    </ul>
+    <div class="nav__right">
+      <div class="nav__status" aria-live="polite">
+        <span class="nav__status-dot" aria-hidden="true"></span>
+        <span>Available</span>
+      </div>
+      <span class="nav__clock" data-clock aria-label="Current time">00:00:00</span>
+    </div>
+  </nav>
+
+  <main class="page-wrap">
+
+    <!-- ═══════════════════════════════════════
+         ABOUT HERO
+    ════════════════════════════════════════════ -->
+    <section class="about-hero" id="about-hero" aria-label="About introduction">
+      <img
+        src="assets/images/about_portrait.png"
+        alt=""
+        class="about-hero__img"
+        aria-hidden="true"
+        loading="eager"
+      />
+
+      <div class="about-hero__inner">
+        <h1 class="about-hero__title">
+          The<br/>
+          person<br/>
+          <em>behind</em><br/>
+          the work.
+        </h1>
+        <p class="about-hero__desc">
+          I'm [Your Name], a full-stack developer and UI/UX designer
+          based in [Your City]. I build digital products that are
+          precise, purposeful, and built to last — from the architecture
+          to the final pixel.
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         BIO SECTION
+    ════════════════════════════════════════════ -->
+    <section class="about-body" aria-label="Biography">
+
+      <div class="about-bio">
+        <div>
+          <p class="section-label about-bio__label">Background</p>
+        </div>
+        <div class="about-bio__text">
+          <p>
+            I started building things on the internet at age 16, obsessed with
+            understanding how great design and solid engineering intersect. That
+            obsession hasn't left me — it's grown into a career built on
+            crafting experiences that feel effortless to use and impossible to ignore.
+          </p>
+          <p>
+            I've worked across a range of industries — from SaaS platforms and
+            e-commerce to branding and creative tools — always with the same
+            conviction: that the best work happens when design and code are treated
+            as a unified discipline, not separate silos.
+          </p>
+          <p>
+            When I'm not at the screen, I'm studying typography, shooting film
+            photography, or searching for the world's best espresso.
+          </p>
+        </div>
+      </div>
+
+      <!-- ══════════════
+           SKILLS GRID
+      ══════════════════ -->
+      <div class="about-skills">
+        <h2 class="about-skills__title">What I do</h2>
+
+        <div class="skills-grid" role="list">
+
+          <div class="skill-item" id="skill-frontend" role="listitem">
+            <p class="skill-item__num">01</p>
+            <h3 class="skill-item__name">Frontend Development</h3>
+            <p class="skill-item__desc">
+              React, Next.js, TypeScript, CSS. Pixel-perfect UIs with performance at the core.
+            </p>
+          </div>
+
+          <div class="skill-item" id="skill-backend" role="listitem">
+            <p class="skill-item__num">02</p>
+            <h3 class="skill-item__name">Backend Engineering</h3>
+            <p class="skill-item__desc">
+              Node.js, Python, REST &amp; GraphQL APIs, PostgreSQL, Redis. Scalable systems that don't break under pressure.
+            </p>
+          </div>
+
+          <div class="skill-item" id="skill-design" role="listitem">
+            <p class="skill-item__num">03</p>
+            <h3 class="skill-item__name">UI/UX Design</h3>
+            <p class="skill-item__desc">
+              Figma, design systems, user flows, prototyping. Design that thinks before it speaks.
+            </p>
+          </div>
+
+          <div class="skill-item" id="skill-mobile" role="listitem">
+            <p class="skill-item__num">04</p>
+            <h3 class="skill-item__name">Mobile Apps</h3>
+            <p class="skill-item__desc">
+              React Native, Expo. Cross-platform mobile experiences with native feel.
+            </p>
+          </div>
+
+          <div class="skill-item" id="skill-devops" role="listitem">
+            <p class="skill-item__num">05</p>
+            <h3 class="skill-item__name">DevOps &amp; Deployment</h3>
+            <p class="skill-item__desc">
+              Vercel, Docker, CI/CD pipelines, AWS. Ship fast, reliably.
+            </p>
+          </div>
+
+          <div class="skill-item" id="skill-branding" role="listitem">
+            <p class="skill-item__num">06</p>
+            <h3 class="skill-item__name">Brand Identity</h3>
+            <p class="skill-item__desc">
+              Logomarks, visual identity systems, typography. Brand presence that endures.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ══════════════
+           EXPERIENCE
+      ══════════════════ -->
+      <div class="about-skills" id="experience" aria-label="Experience">
+        <h2 class="about-skills__title">Experience</h2>
+
+        <div class="skills-grid" style="grid-template-columns: repeat(2, 1fr);" role="list">
+
+          <div class="skill-item" id="exp-freelance" role="listitem">
+            <p class="skill-item__num">2023—Now</p>
+            <h3 class="skill-item__name">Freelance Developer &amp; Designer</h3>
+            <p class="skill-item__desc">
+              Building products for startups and agencies across Southeast Asia and Europe.
+            </p>
+          </div>
+
+          <div class="skill-item" id="exp-agency" role="listitem">
+            <p class="skill-item__num">2021—2023</p>
+            <h3 class="skill-item__name">Frontend Developer — [Agency Name]</h3>
+            <p class="skill-item__desc">
+              Led frontend development for client projects. Shipped 20+ production web apps.
+            </p>
+          </div>
+
+          <div class="skill-item" id="exp-intern" role="listitem">
+            <p class="skill-item__num">2020—2021</p>
+            <h3 class="skill-item__name">UI Designer Intern — [Company Name]</h3>
+            <p class="skill-item__desc">
+              Designed interfaces for a B2B SaaS platform. Contributed to their design system.
+            </p>
+          </div>
+
+          <div class="skill-item" id="exp-education" role="listitem">
+            <p class="skill-item__num">2017—2021</p>
+            <h3 class="skill-item__name">B.Sc. Informatics — [University Name]</h3>
+            <p class="skill-item__desc">
+              Computer Science with a focus on software engineering and human-computer interaction.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         FOOTER CTA SECTION
+    ════════════════════════════════════════════ -->
+    <section style="background:var(--bg-black); padding: var(--pad-y) var(--pad-x); text-align:center;" aria-label="Contact call to action">
+      <p style="font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); margin-bottom:1.5rem;">
+        Open to new projects
+      </p>
+      <p style="font-family:var(--font-display); font-style:italic; font-size:clamp(2rem,5vw,5rem); color:var(--text-sand); line-height:1; margin-bottom:2.5rem; letter-spacing:-0.02em;">
+        Want to work together?
+      </p>
+      <a href="contact.html" class="btn-outline" id="about-contact-cta">
+        Let's Talk
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+          <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.2"/>
+        </svg>
+      </a>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" id="footer" role="contentinfo">
+    <div class="footer__left">
+      <p class="footer__tagline">
+        Let's build<br/>
+        something<br/>
+        <em>unforgettable.</em>
+      </p>
+      <a href="contact.html" class="footer__cta-link" id="footer-contact-cta">
+        Get in touch
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+          <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.2"/>
+        </svg>
+      </a>
+    </div>
+    <div class="footer__right">
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <a href="works.html" class="footer__nav-link" id="footer-works">Works</a>
+        <a href="about.html" class="footer__nav-link" id="footer-about">About</a>
+        <a href="contact.html" class="footer__nav-link" id="footer-contact">Contact</a>
+      </nav>
+      <div class="footer__socials">
+        <a href="https://github.com" class="footer__social" id="footer-github" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://linkedin.com" class="footer__social" id="footer-linkedin" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://twitter.com" class="footer__social" id="footer-twitter" target="_blank" rel="noopener noreferrer">Twitter</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__copy">© 2026 [Your Name]. All rights reserved.</p>
+      <span class="footer__initials">Y—N</span>
+    </div>
+  </footer>
+
+  <script src="js/clock.js"></script>
+  <script src="js/transitions.js"></script>
+  <script src="js/cursor.js"></script>
+
+  <script>
+    // About page — nav stays dark always
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('main-nav').classList.add('nav--dark');
+    });
+  </script>
+
+</body>
+</html>

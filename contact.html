@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact [Your Name] — Available for freelance projects. Reach out via email, LinkedIn, or GitHub." />
+  <title>Contact — [Your Name]</title>
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⬛</text></svg>" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div data-cursor></div>
+  <div data-cursor-dot></div>
+
+  <!-- Navigation -->
+  <nav class="nav nav--dark" id="main-nav" role="navigation" aria-label="Main navigation">
+    <a href="index.html" class="nav__logo" aria-label="Home">
+      <span class="nav__logo-initials">Y—N</span>
+    </a>
+    <ul class="nav__links" role="list">
+      <li><a href="index.html" class="nav__link" id="nav-home">Home</a></li>
+      <li><a href="works.html" class="nav__link" id="nav-works">Works</a></li>
+      <li><a href="about.html" class="nav__link" id="nav-about">About</a></li>
+      <li><a href="contact.html" class="nav__link active" id="nav-contact">Contact</a></li>
+    </ul>
+    <div class="nav__right">
+      <div class="nav__status" aria-live="polite">
+        <span class="nav__status-dot" aria-hidden="true"></span>
+        <span>Available</span>
+      </div>
+      <span class="nav__clock" data-clock aria-label="Current time">00:00:00</span>
+    </div>
+  </nav>
+
+  <main class="contact-page" id="contact-page">
+
+    <div class="contact-hero">
+      <p class="contact-eyebrow">Get in touch</p>
+
+      <h1 class="contact-title">
+        Say<br/>
+        hello.
+      </h1>
+
+      <nav class="contact-links" aria-label="Contact links">
+
+        <a href="mailto:hello@yourname.com"
+           class="contact-link"
+           id="contact-email"
+           data-hover
+           aria-label="Send email to hello@yourname.com">
+          <span class="contact-link__label">Email</span>
+          <span class="contact-link__value">hello@yourname.com</span>
+          <span class="contact-link__arrow" aria-hidden="true">↗</span>
+        </a>
+
+        <a href="https://linkedin.com/in/yourname"
+           class="contact-link"
+           id="contact-linkedin"
+           data-hover
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="Visit LinkedIn profile (opens in new tab)">
+          <span class="contact-link__label">LinkedIn</span>
+          <span class="contact-link__value">linkedin.com/in/yourname</span>
+          <span class="contact-link__arrow" aria-hidden="true">↗</span>
+        </a>
+
+        <a href="https://github.com/yourname"
+           class="contact-link"
+           id="contact-github"
+           data-hover
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="Visit GitHub profile (opens in new tab)">
+          <span class="contact-link__label">GitHub</span>
+          <span class="contact-link__value">github.com/yourname</span>
+          <span class="contact-link__arrow" aria-hidden="true">↗</span>
+        </a>
+
+        <a href="https://twitter.com/yourname"
+           class="contact-link"
+           id="contact-twitter"
+           data-hover
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="Visit Twitter profile (opens in new tab)">
+          <span class="contact-link__label">Twitter</span>
+          <span class="contact-link__value">@yourname</span>
+          <span class="contact-link__arrow" aria-hidden="true">↗</span>
+        </a>
+
+      </nav>
+
+      <div class="contact-availability" aria-live="polite">
+        <span class="contact-availability__dot" aria-hidden="true"></span>
+        Currently available for new projects — [Your City], [Country]
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         BOTTOM BRAND
+    ════════════════════════════════════════════ -->
+    <div style="
+      padding: 3rem var(--pad-x) 2rem;
+      border-top: 1px solid var(--border-light);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    " aria-hidden="true">
+      <p style="
+        font-family: var(--font-mono);
+        font-size: 0.6rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: rgba(221,219,216,0.2);
+      ">© 2026 [Your Name]</p>
+
+      <div style="
+        font-family: var(--font-body);
+        font-size: 3rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        color: rgba(221,219,216,0.08);
+        text-transform: uppercase;
+        user-select: none;
+      ">Y—N</div>
+    </div>
+
+  </main>
+
+  <script src="js/clock.js"></script>
+  <script src="js/transitions.js"></script>
+  <script src="js/cursor.js"></script>
+
+  <script>
+    // Stagger animate contact links on load
+    document.addEventListener('DOMContentLoaded', function() {
+      const links = document.querySelectorAll('.contact-link');
+      links.forEach(function(link, i) {
+        link.style.opacity = '0';
+        link.style.transform = 'translateY(16px)';
+        link.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        setTimeout(function() {
+          link.style.opacity = '1';
+          link.style.transform = 'translateY(0)';
+        }, 200 + i * 100);
+      });
+    });
+  </script>
+
+</body>
+</html>

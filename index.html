@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of [Your Name] — Full-Stack Developer & UI/UX Designer crafting digital experiences that leave a mark." />
+  <title>[Your Name] — Developer & Designer</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⬛</text></svg>" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div data-cursor></div>
+  <div data-cursor-dot></div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="main-nav" role="navigation" aria-label="Main navigation">
+    <a href="index.html" class="nav__logo" aria-label="Home">
+      <span class="nav__logo-initials">Y—N</span>
+    </a>
+    <ul class="nav__links" role="list">
+      <li><a href="index.html" class="nav__link active" id="nav-home">Home</a></li>
+      <li><a href="works.html" class="nav__link" id="nav-works">Works</a></li>
+      <li><a href="about.html" class="nav__link" id="nav-about">About</a></li>
+      <li><a href="contact.html" class="nav__link" id="nav-contact">Contact</a></li>
+    </ul>
+    <div class="nav__right">
+      <div class="nav__status" aria-live="polite">
+        <span class="nav__status-dot" aria-hidden="true"></span>
+        <span>Available</span>
+      </div>
+      <span class="nav__clock" data-clock aria-label="Current time">00:00:00</span>
+    </div>
+  </nav>
+
+  <main class="page-wrap">
+
+    <!-- ═══════════════════════════════════════
+         HERO
+    ════════════════════════════════════════════ -->
+    <section class="hero" id="hero" aria-label="Hero section">
+      <div class="hero__bg" aria-hidden="true"></div>
+
+      <div class="hero__header" aria-hidden="true">
+        <span class="section-label section-label--light">2024—Future</span>
+        <span class="hero__date" id="hero-date">Portfolio</span>
+        <span class="hero__tag">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+            <rect width="10" height="10" fill="rgba(221,219,216,0.3)"/>
+          </svg>
+          Open to work
+        </span>
+      </div>
+
+      <div class="hero__content">
+        <h1 class="hero__title">
+          Building<br/>
+          things that<br/>
+          <em>matter.</em>
+        </h1>
+      </div>
+
+      <div class="hero__footer">
+        <div class="hero__scroll">
+          <div class="hero__scroll-line" aria-hidden="true"></div>
+          Scroll
+        </div>
+        <p class="hero__role">Full-Stack Developer &amp; UI/UX Designer</p>
+        <div class="hero__cta">
+          <a href="works.html" class="btn-outline" id="hero-view-works">
+            View Works
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.2"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         STATEMENT
+    ════════════════════════════════════════════ -->
+    <section class="statement" aria-label="Design philosophy">
+      <div class="statement__markers" aria-hidden="true">
+        <span class="statement__marker"></span>
+        <span class="statement__marker"></span>
+        <span class="statement__marker"></span>
+      </div>
+
+      <div class="statement__text">
+        <p class="statement__para">
+          Code shapes the world<br/>
+          not as a utility, but as a<br/>
+          force that <strong>leaves a mark.</strong>
+        </p>
+        <p class="statement__para">
+          It defines how your<br/>
+          product is perceived and<br/>
+          how it's experienced.
+        </p>
+        <p class="statement__para">
+          Leave yours.
+        </p>
+      </div>
+
+      <div class="statement__markers" aria-hidden="true">
+        <span class="statement__marker"></span>
+        <span class="statement__marker"></span>
+        <span class="statement__marker"></span>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         DIVIDER BAR
+    ════════════════════════════════════════════ -->
+    <div class="divider-bar" aria-hidden="true">
+      <span class="section-label">The Craft<br/>is here</span>
+      <div class="divider-bar__line"></div>
+      <div class="divider-bar__label">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+          <path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.2"/>
+        </svg>
+        Works
+      </div>
+      <div class="divider-bar__line"></div>
+      <div class="divider-bar__date">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+          <path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.2" style="transform:scaleX(-1);transform-origin:center"/>
+        </svg>
+        Aug 2024—NOW
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         WORKS GRID
+    ════════════════════════════════════════════ -->
+    <section class="works-section" id="works" aria-label="Selected works">
+      <p class="works-sub">Settling is easy — the work here isn't built for that</p>
+
+      <div class="works-grid" role="list">
+
+        <!-- Col 1 -->
+        <div class="works-grid__col" role="listitem">
+          <a href="works.html" class="project-card" id="project-nexus" data-hover aria-label="Nexus Dashboard — Web Development project">
+            <div class="project-card__img-wrap">
+              <img src="assets/images/project_dashboard.png" alt="Nexus Dashboard project" class="project-card__img" loading="lazy" />
+            </div>
+            <div class="project-card__info">
+              <p class="project-card__name">Nexus Dashboard</p>
+              <p class="project-card__type">Web Development</p>
+            </div>
+            <div class="project-card__arrow" aria-hidden="true">
+              <svg viewBox="0 0 12 12" fill="none">
+                <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.2"/>
+              </svg>
+            </div>
+          </a>
+        </div>
+
+        <!-- Col 2 -->
+        <div class="works-grid__col" role="listitem">
+          <a href="works.html" class="project-card" id="project-forma" data-hover aria-label="Forma App — Mobile Design project">
+            <div class="project-card__img-wrap">
+              <img src="assets/images/project_mobile_app.png" alt="Forma App project" class="project-card__img" loading="lazy" />
+            </div>
+            <div class="project-card__info">
+              <p class="project-card__name">Forma App</p>
+              <p class="project-card__type">Mobile Design</p>
+            </div>
+            <div class="project-card__arrow" aria-hidden="true">
+              <svg viewBox="0 0 12 12" fill="none">
+                <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.2"/>
+              </svg>
+            </div>
+          </a>
+        </div>
+
+        <!-- Col 3 -->
+        <div class="works-grid__col" role="listitem">
+          <a href="works.html" class="project-card" id="project-arca" data-hover aria-label="Arca Store — E-Commerce project">
+            <div class="project-card__img-wrap">
+              <img src="assets/images/project_ecommerce.png" alt="Arca Store project" class="project-card__img" loading="lazy" />
+            </div>
+            <div class="project-card__info">
+              <p class="project-card__name">Arca Store</p>
+              <p class="project-card__type">E-Commerce</p>
+            </div>
+            <div class="project-card__arrow" aria-hidden="true">
+              <svg viewBox="0 0 12 12" fill="none">
+                <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.2"/>
+              </svg>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         INSIGHTS DIVIDER
+    ════════════════════════════════════════════ -->
+    <div class="divider-bar" style="margin-top: calc(var(--pad-y))" aria-hidden="true">
+      <span class="section-label">From<br/>the desk</span>
+      <div class="divider-bar__line"></div>
+      <div class="divider-bar__label">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+          <path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.2"/>
+        </svg>
+        Insights
+      </div>
+      <div class="divider-bar__line"></div>
+      <div class="divider-bar__date">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+          <path d="M1 1L9 9M9 9H3M9 9V3" stroke="currentColor" stroke-width="1.2"/>
+        </svg>
+        Narrative &amp; Notes
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         INSIGHTS
+    ════════════════════════════════════════════ -->
+    <section class="insights-section" id="insights" aria-label="Recent insights">
+      <h2 class="insights-heading">
+        Recent <em>insights</em><br/>and notes
+      </h2>
+
+      <div class="insights-grid" role="list">
+
+        <article class="insight-card" id="insight-1" role="listitem">
+          <div class="insight-card__img-wrap">
+            <img src="assets/images/project_branding.png" alt="Article about design systems" class="insight-card__img" loading="lazy" />
+          </div>
+          <div class="insight-card__body">
+            <span class="insight-card__plus">+</span>
+            <h3 class="insight-card__title">Why design systems fail — and how to fix them</h3>
+            <p class="insight-card__meta">5m read · Mon 9 March '26 · Author: You</p>
+          </div>
+        </article>
+
+        <article class="insight-card" id="insight-2" role="listitem">
+          <div class="insight-card__img-wrap">
+            <img src="assets/images/project_web_app.png" alt="Article about web performance" class="insight-card__img" loading="lazy" />
+          </div>
+          <div class="insight-card__body">
+            <span class="insight-card__plus">+</span>
+            <h3 class="insight-card__title">The hidden cost of slow web apps</h3>
+            <p class="insight-card__meta">4m read · Fri 20 Feb '26 · Author: You</p>
+          </div>
+        </article>
+
+        <article class="insight-card" id="insight-3" role="listitem">
+          <div class="insight-card__img-wrap">
+            <img src="assets/images/project_mobile_app.png" alt="Article about mobile design" class="insight-card__img" loading="lazy" />
+          </div>
+          <div class="insight-card__body">
+            <span class="insight-card__plus">+</span>
+            <h3 class="insight-card__title">Presence as a brand cornerstone</h3>
+            <p class="insight-card__meta">3m read · Fri 9 Jan '26 · Author: You</p>
+          </div>
+        </article>
+
+        <article class="insight-card" id="insight-4" role="listitem">
+          <div class="insight-card__img-wrap">
+            <img src="assets/images/hero_bg.png" alt="Article about brand building" class="insight-card__img" loading="lazy" />
+          </div>
+          <div class="insight-card__body">
+            <span class="insight-card__plus">+</span>
+            <h3 class="insight-card__title">How I approach every new project</h3>
+            <p class="insight-card__meta">5m read · Fri 5 Dec '25 · Author: You</p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════ -->
+  <footer class="footer" id="footer" role="contentinfo">
+    <div class="footer__left">
+      <p class="footer__tagline">
+        Let's build<br/>
+        something<br/>
+        <em>unforgettable.</em>
+      </p>
+      <a href="contact.html" class="footer__cta-link" id="footer-contact-cta">
+        Get in touch
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+          <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.2"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="footer__right">
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <a href="works.html" class="footer__nav-link" id="footer-works">Works</a>
+        <a href="about.html" class="footer__nav-link" id="footer-about">About</a>
+        <a href="contact.html" class="footer__nav-link" id="footer-contact">Contact</a>
+      </nav>
+      <div class="footer__socials">
+        <a href="https://github.com" class="footer__social" id="footer-github" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://linkedin.com" class="footer__social" id="footer-linkedin" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://twitter.com" class="footer__social" id="footer-twitter" target="_blank" rel="noopener noreferrer">Twitter</a>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p class="footer__copy">© 2026 [Your Name]. All rights reserved.</p>
+      <span class="footer__initials">Y—N</span>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/clock.js"></script>
+  <script src="js/transitions.js"></script>
+  <script src="js/cursor.js"></script>
+
+  <script>
+    // Update hero date
+    const heroDate = document.getElementById('hero-date');
+    if (heroDate) {
+      const now = new Date();
+      heroDate.textContent = now.getFullYear() + '—Future';
+    }
+
+    // Nav scroll behavior — switch to dark when over hero
+    (function() {
+      const nav = document.getElementById('main-nav');
+      const hero = document.getElementById('hero');
+      if (!nav || !hero) return;
+      const obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            nav.classList.add('nav--dark');
+          } else {
+            nav.classList.remove('nav--dark');
+          }
+        });
+      }, { threshold: 0.1 });
+      obs.observe(hero);
+    })();
+  </script>
+
+</body>
+</html>
