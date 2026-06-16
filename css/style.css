@@ -10,16 +10,16 @@
    ============================================================ */
 :root {
   /* Colors */
-  --bg-sand:    #DDDBD8;
-  --bg-black:   #080808;
-  --bg-dark:    #111111;
+  --bg-sand:    #0D0910;          /* was beige — now deep purple-black (main bg) */
+  --bg-black:   #060408;          /* deepest black, hero/footer */
+  --bg-dark:    #130E1A;          /* slightly lifted purple-dark, card bg */
   --accent:     #6B21A8;
   --accent-dim: #4A1572;
-  --text-dark:  #0A0A0A;
-  --text-sand:  #DDDBD8;
-  --text-muted: #888888;
-  --border:     rgba(0,0,0,0.12);
-  --border-light: rgba(221,219,216,0.15);
+  --text-dark:  #E8E6F0;          /* was near-black — now near-white for dark bg */
+  --text-sand:  #DDDBD8;          /* stays as the warm off-white */
+  --text-muted: #6B6578;          /* muted purple-gray */
+  --border:     rgba(221,219,216,0.10);  /* was dark — now subtle light border */
+  --border-light: rgba(221,219,216,0.12);
 
   /* Typography */
   --font-display: 'DM Serif Display', Georgia, serif;
@@ -49,6 +49,7 @@ html {
   background: var(--bg-sand);
   color: var(--text-dark);
   cursor: none;
+  color-scheme: dark;
 }
 
 body {
@@ -81,7 +82,7 @@ body.page-leaving {
   left: -20px;
   width: 40px;
   height: 40px;
-  border: 1.5px solid var(--text-dark);
+  border: 1.5px solid var(--text-sand);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
@@ -99,7 +100,7 @@ body.page-leaving {
   left: -3px;
   width: 6px;
   height: 6px;
-  background: var(--text-dark);
+  background: var(--text-sand);
   border-radius: 50%;
   pointer-events: none;
   z-index: 10000;
@@ -115,11 +116,15 @@ body.page-leaving {
   border-color: var(--accent);
 }
 
-/* Dark section cursors */
-.section--dark [data-cursor],
-.nav--dark [data-cursor] {
+/* Dark section cursors — toggled by JS based on element under cursor */
+[data-cursor].cursor--light {
   border-color: var(--text-sand);
 }
+
+[data-cursor-dot].cursor-dot--light {
+  background: var(--text-sand);
+}
+
 
 /* ============================================================
    NAVIGATION
@@ -136,7 +141,7 @@ body.page-leaving {
   align-items: center;
   padding: 0 var(--pad-x);
   border-bottom: 1px solid var(--border);
-  background: var(--bg-sand);
+  background: var(--bg-sand); /* dark purple-black */
   transition: background var(--dur-med) var(--ease),
               border-color var(--dur-med) var(--ease);
 }
@@ -155,12 +160,12 @@ body.page-leaving {
   font-weight: 500;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: var(--text-dark);
+  color: var(--text-sand);
   transition: color var(--dur-med);
 }
 
 .nav.nav--dark .nav__logo {
-  color: var(--text-sand);
+  color: var(--text-sand); /* unchanged — already light */
 }
 
 .nav__logo-initials {
@@ -181,7 +186,7 @@ body.page-leaving {
   font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--text-dark);
+  color: var(--text-sand);
   transition: color var(--dur-fast);
   position: relative;
 }
@@ -441,7 +446,7 @@ body.page-leaving {
    STATEMENT SECTION
    ============================================================ */
 .statement {
-  background: var(--bg-sand);
+  background: var(--bg-dark); /* slightly lifted purple-dark */
   padding: var(--pad-y) var(--pad-x);
   display: grid;
   grid-template-columns: auto 1fr auto;
@@ -460,7 +465,7 @@ body.page-leaving {
 .statement__marker {
   width: 5px;
   height: 5px;
-  background: var(--text-dark);
+  background: var(--accent);
   flex-shrink: 0;
 }
 
@@ -476,7 +481,7 @@ body.page-leaving {
   font-size: clamp(1.35rem, 2.5vw, 2.1rem);
   font-weight: 300;
   line-height: 1.45;
-  color: var(--text-dark);
+  color: var(--text-sand);
   letter-spacing: -0.01em;
   text-align: center;
 }
@@ -547,7 +552,7 @@ body.page-leaving {
    WORKS GRID
    ============================================================ */
 .works-section {
-  background: var(--bg-sand);
+  background: var(--bg-sand); /* dark purple-black */
   padding: 0 var(--pad-x) var(--pad-y);
 }
 
@@ -591,29 +596,29 @@ body.page-leaving {
   height: 100%;
   object-fit: cover;
   transition: transform 0.8s var(--ease), filter 0.5s var(--ease);
-  filter: saturate(0.85);
+  filter: saturate(0.7) brightness(0.85);
 }
 
 .project-card:hover .project-card__img {
   transform: scale(1.04);
-  filter: saturate(1);
+  filter: saturate(1) brightness(1);
 }
 
 .project-card__info {
   padding: 1rem 1.25rem 1.25rem;
-  background: var(--bg-sand);
+  background: var(--bg-dark);
   transition: background var(--dur-fast);
 }
 
 .project-card:hover .project-card__info {
-  background: #D8D6D3;
+  background: #1A1125;
 }
 
 .project-card__name {
   font-family: var(--font-body);
   font-size: 0.85rem;
   font-weight: 500;
-  color: var(--text-dark);
+  color: var(--text-sand);
   margin-bottom: 0.2rem;
 }
 
@@ -640,7 +645,7 @@ body.page-leaving {
   transition: opacity var(--dur-med) var(--ease),
               transform var(--dur-med) var(--ease),
               background var(--dur-fast);
-  background: var(--bg-sand);
+  background: var(--bg-dark);
 }
 
 .project-card:hover .project-card__arrow {
@@ -653,7 +658,7 @@ body.page-leaving {
 .project-card__arrow svg {
   width: 12px;
   height: 12px;
-  stroke: var(--text-dark);
+  stroke: var(--text-sand);
   transition: stroke var(--dur-fast);
 }
 
@@ -665,7 +670,7 @@ body.page-leaving {
    INSIGHTS / BLOG GRID
    ============================================================ */
 .insights-section {
-  background: var(--bg-sand);
+  background: var(--bg-sand); /* dark purple-black */
   padding: 0 var(--pad-x) var(--pad-y);
   border-top: 1px solid var(--border);
   margin-top: var(--pad-y);
@@ -678,7 +683,7 @@ body.page-leaving {
   font-weight: 300;
   line-height: 1.35;
   letter-spacing: -0.01em;
-  color: var(--text-dark);
+  color: var(--text-sand);
   text-align: center;
 }
 
@@ -700,6 +705,7 @@ body.page-leaving {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  background: var(--bg-dark);
 }
 
 .insight-card__img {
@@ -737,7 +743,7 @@ body.page-leaving {
   font-size: 0.82rem;
   font-weight: 500;
   line-height: 1.4;
-  color: var(--text-dark);
+  color: var(--text-sand);
 }
 
 .insight-card__meta {
@@ -927,7 +933,7 @@ body.page-leaving {
 }
 
 .about-body {
-  background: var(--bg-sand);
+  background: var(--bg-sand); /* dark purple-black */
   padding: var(--pad-y) var(--pad-x);
 }
 
@@ -954,7 +960,7 @@ body.page-leaving {
   font-size: clamp(1rem, 1.5vw, 1.25rem);
   font-weight: 300;
   line-height: 1.75;
-  color: var(--text-dark);
+  color: var(--text-sand);
 }
 
 .about-bio__text p + p {
@@ -1015,7 +1021,7 @@ body.page-leaving {
    WORKS PAGE
    ============================================================ */
 .works-hero {
-  background: var(--bg-sand);
+  background: var(--bg-sand); /* dark purple-black */
   padding: calc(var(--nav-h) + 4rem) var(--pad-x) 3rem;
   border-bottom: 1px solid var(--border);
 }
@@ -1026,7 +1032,7 @@ body.page-leaving {
   font-size: clamp(3.5rem, 8vw, 8rem);
   line-height: 0.92;
   letter-spacing: -0.03em;
-  color: var(--text-dark);
+  color: var(--text-sand);
 }
 
 .works-hero__title em {
@@ -1183,7 +1189,7 @@ body.page-leaving {
 .page-header {
   padding: calc(var(--nav-h) + 3rem) var(--pad-x) 3rem;
   border-bottom: 1px solid var(--border);
-  background: var(--bg-sand);
+  background: var(--bg-sand); /* dark purple-black */
 }
 
 /* ============================================================
