@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfolio of [Your Name] — Full-Stack Developer & UI/UX Designer crafting digital experiences that leave a mark." />
-  <title>[Your Name] — Developer & Designer</title>
+  <meta name="description" content="Portfolio of Y—N — Cybersecurity Researcher & Creative Developer. Two sides, one creator." />
+  <title>Y—N — CySec & Design</title>
 
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⬛</text></svg>" />
@@ -19,17 +19,32 @@
   <div data-cursor></div>
   <div data-cursor-dot></div>
 
-  <!-- Navigation -->
-  <nav class="nav" id="main-nav" role="navigation" aria-label="Main navigation">
-    <a href="index.html" class="nav__logo" aria-label="Home">
-      <span class="nav__logo-initials">Y—N</span>
+  <!-- ═══════════════════════════════════════════════════════
+       NAVIGATION — morphs between dev (B&W) and design (purple)
+  ════════════════════════════════════════════════════════════ -->
+  <nav id="main-nav" class="nav nav--dev" role="navigation" aria-label="Main navigation">
+
+    <a href="#dev-hero" class="nav__logo" aria-label="Home — top of page">
+      <span class="nav__logo-dev">[ Y—N ]</span>
+      <span class="nav__logo-design">Y—N</span>
     </a>
-    <ul class="nav__links" role="list">
-      <li><a href="index.html" class="nav__link active" id="nav-home">Home</a></li>
-      <li><a href="works.html" class="nav__link" id="nav-works">Works</a></li>
-      <li><a href="about.html" class="nav__link" id="nav-about">About</a></li>
-      <li><a href="contact.html" class="nav__link" id="nav-contact">Contact</a></li>
+
+    <!-- DEV side links -->
+    <ul class="nav__links nav__links--dev" id="nav-links-dev" role="list">
+      <li><a href="#dev-hero"  class="nav__link active" id="nl-home">./home</a></li>
+      <li><a href="#certs"     class="nav__link" id="nl-certs">./certs</a></li>
+      <li><a href="#skills"    class="nav__link" id="nl-skills">./skills</a></li>
+      <li><a href="#ctf"       class="nav__link" id="nl-ctf">./ctf</a></li>
     </ul>
+
+    <!-- DESIGN side links -->
+    <ul class="nav__links nav__links--design" id="nav-links-design" role="list">
+      <li><a href="#design-hero"   class="nav__link" id="nl-design">Home</a></li>
+      <li><a href="#works"         class="nav__link" id="nl-works">Works</a></li>
+      <li><a href="#about-design"  class="nav__link" id="nl-about">About</a></li>
+      <li><a href="#contact"       class="nav__link" id="nl-contact">Contact</a></li>
+    </ul>
+
     <div class="nav__right">
       <div class="nav__status" aria-live="polite">
         <span class="nav__status-dot" aria-hidden="true"></span>
@@ -39,316 +54,437 @@
     </div>
   </nav>
 
-  <main class="page-wrap">
+  <main>
 
-    <!-- ═══════════════════════════════════════
-         HERO
-    ════════════════════════════════════════════ -->
-    <section class="hero" id="hero" aria-label="Hero section">
-      <div class="hero__bg" aria-hidden="true"></div>
+    <!-- ═══════════════════════════════════════════════════════
+         GATE — Interactive splash screen / choose your world
+    ════════════════════════════════════════════════════════════ -->
+    <section id="gate" class="gate" aria-label="Choose your path — Design or Dev">
 
-      <div class="hero__header" aria-hidden="true">
-        <span class="section-label section-label--light">2024—Future</span>
-        <span class="hero__date" id="hero-date">Portfolio</span>
-        <span class="hero__tag">
-          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
-            <rect width="10" height="10" fill="rgba(221,219,216,0.3)"/>
-          </svg>
-          Open to work
-        </span>
-      </div>
+      <!-- LEFT half — Design world -->
+      <div class="gate__half gate__half--left" id="gate-left" role="button" tabindex="0" aria-label="Enter Design world">
+        <!-- Purple bloom overlay -->
+        <div class="gate__overlay gate__overlay--design" aria-hidden="true"></div>
 
-      <div class="hero__content">
-        <h1 class="hero__title">
-          Building<br/>
-          things that<br/>
-          <em>matter.</em>
-        </h1>
-      </div>
-
-      <div class="hero__footer">
-        <div class="hero__scroll">
-          <div class="hero__scroll-line" aria-hidden="true"></div>
-          Scroll
+        <!-- Reveals on hover left -->
+        <div class="gate__content gate__content--left">
+          <p class="gate__eyebrow">UI / UX Designer · Creative Developer</p>
+          <h2 class="gate__heading gate__heading--design">
+            I design<br/>things that<br/><em>feel.</em>
+          </h2>
+          <span class="gate__cta gate__cta--design" aria-hidden="true">Enter Design World →</span>
         </div>
-        <p class="hero__role">Full-Stack Developer &amp; UI/UX Designer</p>
-        <div class="hero__cta">
-          <a href="works.html" class="btn-outline" id="hero-view-works">
-            View Works
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-              <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.2"/>
-            </svg>
-          </a>
+
+        <!-- Default edge hint -->
+        <div class="gate__edge gate__edge--left" aria-hidden="true">← Design</div>
+      </div>
+
+      <!-- Vertical divider line -->
+      <div class="gate__divider" aria-hidden="true"></div>
+
+      <!-- Default center label (hidden on hover) -->
+      <div class="gate__center" id="gate-center" aria-hidden="true">
+        <p class="gate__center-name">[ Y—N ]</p>
+        <p class="gate__center-hint">hover to choose</p>
+      </div>
+
+      <!-- RIGHT half — Dev world -->
+      <div class="gate__half gate__half--right" id="gate-right" role="button" tabindex="0" aria-label="Enter Dev world">
+        <!-- Dark purple + scanlines overlay -->
+        <div class="gate__overlay gate__overlay--dev" aria-hidden="true"></div>
+
+        <!-- Reveals on hover right -->
+        <div class="gate__content gate__content--right">
+          <p class="gate__eyebrow">Cybersecurity Researcher · Developer</p>
+          <h2 class="gate__heading gate__heading--dev">
+            I break<br/>systems.
+          </h2>
+          <span class="gate__cta gate__cta--dev" aria-hidden="true">Enter Dev World →</span>
         </div>
+
+        <!-- Default edge hint -->
+        <div class="gate__edge gate__edge--right" aria-hidden="true">Dev →</div>
       </div>
+
+      <!-- Bottom scroll hint -->
+      <div class="gate__scroll-hint" aria-hidden="true">
+        <span>scroll to explore both</span>
+      </div>
+
     </section>
+    <!-- /gate -->
 
-    <!-- ═══════════════════════════════════════
-         STATEMENT
-    ════════════════════════════════════════════ -->
-    <section class="statement" aria-label="Design philosophy">
-      <div class="statement__markers" aria-hidden="true">
-        <span class="statement__marker"></span>
-        <span class="statement__marker"></span>
-        <span class="statement__marker"></span>
-      </div>
+    <!-- ═══════════════════════════════════════════════════════
+         ██████╗ ███████╗██╗   ██╗    ███████╗██╗██████╗ ███████╗
+         ██╔══██╗██╔════╝██║   ██║    ██╔════╝██║██╔══██╗██╔════╝
+         ██║  ██║█████╗  ██║   ██║    ███████╗██║██║  ██║█████╗
+         ██║  ██║██╔══╝  ╚██╗ ██╔╝    ╚════██║██║██║  ██║██╔══╝
+         ██████╔╝███████╗ ╚████╔╝     ███████║██║██████╔╝███████╗
+         ╚═════╝ ╚══════╝  ╚═══╝      ╚══════╝╚═╝╚═════╝ ╚══════╝
+    ════════════════════════════════════════════════════════════ -->
+    <div id="dev-side" class="side side--dev">
 
-      <div class="statement__text">
-        <p class="statement__para">
-          Code shapes the world<br/>
-          not as a utility, but as a<br/>
-          force that <strong>leaves a mark.</strong>
-        </p>
-        <p class="statement__para">
-          It defines how your<br/>
-          product is perceived and<br/>
-          how it's experienced.
-        </p>
-        <p class="statement__para">
-          Leave yours.
-        </p>
-      </div>
+      <!-- § 1 — DEV HERO -->
+      <section id="dev-hero" class="dev-hero" aria-label="Developer introduction">
 
-      <div class="statement__markers" aria-hidden="true">
-        <span class="statement__marker"></span>
-        <span class="statement__marker"></span>
-        <span class="statement__marker"></span>
-      </div>
-    </section>
+        <!-- Dither background canvas (grayscale) -->
+        <canvas id="dither-dev" class="dither-canvas" aria-hidden="true"></canvas>
 
-    <!-- ═══════════════════════════════════════
-         DIVIDER BAR
-    ════════════════════════════════════════════ -->
-    <div class="divider-bar" aria-hidden="true">
-      <span class="section-label">The Craft<br/>is here</span>
-      <div class="divider-bar__line"></div>
-      <div class="divider-bar__label">
-        <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-          <path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.2"/>
-        </svg>
-        Works
-      </div>
-      <div class="divider-bar__line"></div>
-      <div class="divider-bar__date">
-        <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-          <path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.2" style="transform:scaleX(-1);transform-origin:center"/>
-        </svg>
-        Aug 2024—NOW
+        <!-- Animated terminal output -->
+        <div class="dev-hero__terminal" id="terminal-output" aria-live="polite" aria-label="Boot sequence"></div>
+
+        <!-- Big headline — animates after terminal -->
+        <div class="dev-hero__content">
+          <h1 class="dev-hero__title" aria-label="Breaker of systems. Builder of defenses.">
+            <span class="dev-hero__title-line">BREAKER OF</span>
+            <span class="dev-hero__title-line">SYSTEMS.</span>
+            <span class="dev-hero__title-line dev-hero__title-line--outline">BUILDER OF</span>
+            <span class="dev-hero__title-line dev-hero__title-line--outline">DEFENSES.</span>
+          </h1>
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="dev-hero__footer">
+          <div class="dev-hero__prompt" aria-hidden="true">
+            root@portolah:~# <span class="dev-hero__cursor">_</span>
+          </div>
+          <p class="dev-hero__role">Cybersecurity Researcher · Developer</p>
+          <div class="dev-hero__cta">
+            <a href="#certs" class="dev-btn" id="hero-dev-cta" data-hover>ls ./certificates</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- § 2 — CERTIFICATES -->
+      <section id="certs" class="dev-section" aria-label="Security certifications">
+        <div class="dev-section__header">
+          <span class="dev-label">[01] ./certs</span>
+          <h2 class="dev-section__title">Security<br/>Clearances.</h2>
+        </div>
+
+        <div class="certs-grid">
+          <!-- Replace with your real cert data -->
+          <div class="cert-card" id="cert-comptia">
+            <span class="cert-card__status">[VERIFIED]</span>
+            <h3 class="cert-card__name">CompTIA Security+</h3>
+            <p class="cert-card__issuer">CompTIA · 2024</p>
+            <p class="cert-card__desc">Industry-standard certification validating baseline security skills, risk management, and threat analysis.</p>
+          </div>
+
+          <div class="cert-card" id="cert-ejpt">
+            <span class="cert-card__status">[VERIFIED]</span>
+            <h3 class="cert-card__name">eJPT</h3>
+            <p class="cert-card__issuer">eLearnSecurity · 2024</p>
+            <p class="cert-card__desc">Hands-on penetration testing certification covering network scanning, exploitation, and post-exploitation.</p>
+          </div>
+
+          <div class="cert-card" id="cert-thm">
+            <span class="cert-card__status cert-card__status--classified">[CLASSIFIED]</span>
+            <h3 class="cert-card__name">TryHackMe</h3>
+            <p class="cert-card__issuer">Top 1% Globally · Active</p>
+            <p class="cert-card__desc">Consistent practitioner completing rooms across offensive security, OSINT, and defensive operations.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- § 3 — SKILLS & TOOLS -->
+      <section id="skills" class="dev-section dev-section--dark" aria-label="Technical skills and tools">
+        <div class="dev-section__header">
+          <span class="dev-label">[02] ./skills</span>
+          <h2 class="dev-section__title">Tools &amp;<br/>Weapons.</h2>
+        </div>
+
+        <div class="skills-matrix">
+          <div class="skill-category">
+            <span class="skill-category__label">// Network</span>
+            <div class="skill-tags">
+              <span class="skill-tag">Nmap</span>
+              <span class="skill-tag">Wireshark</span>
+              <span class="skill-tag">Netcat</span>
+              <span class="skill-tag">tcpdump</span>
+              <span class="skill-tag">Masscan</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <span class="skill-category__label">// Exploitation</span>
+            <div class="skill-tags">
+              <span class="skill-tag">Metasploit</span>
+              <span class="skill-tag">Burp Suite</span>
+              <span class="skill-tag">SQLmap</span>
+              <span class="skill-tag">Hydra</span>
+              <span class="skill-tag">John the Ripper</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <span class="skill-category__label">// Languages</span>
+            <div class="skill-tags">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">Bash</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">C</span>
+              <span class="skill-tag">PowerShell</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <span class="skill-category__label">// Environment</span>
+            <div class="skill-tags">
+              <span class="skill-tag">Kali Linux</span>
+              <span class="skill-tag">Docker</span>
+              <span class="skill-tag">VirtualBox</span>
+              <span class="skill-tag">Git</span>
+              <span class="skill-tag">tmux</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- § 4 — CTF ACHIEVEMENTS -->
+      <section id="ctf" class="dev-section" aria-label="CTF achievements">
+        <div class="dev-section__header">
+          <span class="dev-label">[03] ./ctf</span>
+          <h2 class="dev-section__title">CTF<br/>Achievements.</h2>
+        </div>
+
+        <!-- Replace placeholder entries with your real wins -->
+        <div class="ctf-list">
+          <div class="ctf-item" id="ctf-htb">
+            <span class="ctf-item__num">#001</span>
+            <div class="ctf-item__info">
+              <h3 class="ctf-item__name">Hack The Box — Pro Hacker</h3>
+              <p class="ctf-item__meta">Platform: HTB · Rank: Pro Hacker · 2024</p>
+            </div>
+            <span class="ctf-item__badge">[PWNED]</span>
+          </div>
+
+          <div class="ctf-item" id="ctf-thm">
+            <span class="ctf-item__num">#002</span>
+            <div class="ctf-item__info">
+              <h3 class="ctf-item__name">TryHackMe — Top 1% Global</h3>
+              <p class="ctf-item__meta">Platform: THM · Global Rank: Top 1% · 2024</p>
+            </div>
+            <span class="ctf-item__badge">[OWNED]</span>
+          </div>
+
+          <div class="ctf-item" id="ctf-local">
+            <span class="ctf-item__num">#003</span>
+            <div class="ctf-item__info">
+              <h3 class="ctf-item__name">National CTF Competition</h3>
+              <p class="ctf-item__meta">Event: CTF Event · Category: Web / Pwn · 2024</p>
+            </div>
+            <span class="ctf-item__badge">[SOLVED]</span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+    <!-- /dev-side -->
+
+    <!-- ═══════════════════════════════════════════════════════
+         TRANSITION ZONE — the hero moment
+    ════════════════════════════════════════════════════════════ -->
+    <div id="transition-zone" class="transition-zone" aria-hidden="true">
+      <!-- Layered backgrounds -->
+      <div class="tz__bg-bottom"></div>
+      <div class="tz__bg-top"></div>
+
+      <!-- Diagonal tear line -->
+      <div class="tz__tear-line"></div>
+
+      <!-- Centered label — animated via GSAP -->
+      <div class="tz__content" id="tz-content">
+        <div class="tz__label">
+          <span class="tz__label-dev">DEV</span>
+          <span class="tz__label-arrow">↕</span>
+          <span class="tz__label-design">DESIGN</span>
+        </div>
+        <p class="tz__sub">Two minds. One creator.</p>
       </div>
     </div>
 
-    <!-- ═══════════════════════════════════════
-         WORKS GRID
-    ════════════════════════════════════════════ -->
-    <section class="works-section" id="works" aria-label="Selected works">
-      <p class="works-sub">Settling is easy — the work here isn't built for that</p>
+    <!-- ═══════════════════════════════════════════════════════
+         ██████╗ ███████╗███████╗██╗ ██████╗ ███╗   ██╗
+         ██╔══██╗██╔════╝██╔════╝██║██╔════╝ ████╗  ██║
+         ██║  ██║█████╗  ███████╗██║██║  ███╗██╔██╗ ██║
+         ██║  ██║██╔══╝  ╚════██║██║██║   ██║██║╚██╗██║
+         ██████╔╝███████╗███████║██║╚██████╔╝██║ ╚████║
+         ╚═════╝ ╚══════╝╚══════╝╚═╝ ╚═════╝ ╚═╝  ╚═══╝
+    ════════════════════════════════════════════════════════════ -->
+    <div id="design-side" class="side side--design">
 
-      <div class="works-grid" role="list">
+      <!-- § 5 — DESIGN HERO -->
+      <section id="design-hero" class="design-hero" aria-label="Designer introduction">
+        <!-- Dither background canvas (purple) -->
+        <canvas id="dither-design" class="dither-canvas" aria-hidden="true"></canvas>
 
-        <!-- Col 1 -->
-        <div class="works-grid__col" role="listitem">
-          <a href="works.html" class="project-card" id="project-nexus" data-hover aria-label="Nexus Dashboard — Web Development project">
-            <div class="project-card__img-wrap">
-              <img src="assets/images/project_dashboard.png" alt="Nexus Dashboard project" class="project-card__img" loading="lazy" />
+        <div class="design-hero__bg" aria-hidden="true"></div>
+
+        <div class="design-hero__header" aria-hidden="true">
+          <span class="design-label">2024—Future</span>
+          <span class="design-label">Portfolio</span>
+          <span class="design-label">Open to work</span>
+        </div>
+
+        <div class="design-hero__content">
+          <h2 class="design-hero__title">
+            Building<br/>
+            things that<br/>
+            <em>matter.</em>
+          </h2>
+        </div>
+
+        <div class="design-hero__footer">
+          <div class="design-hero__scroll" aria-hidden="true">
+            <div class="design-hero__scroll-line"></div>
+            Scroll
+          </div>
+          <p class="design-hero__role">UI/UX Designer · Creative Developer</p>
+          <div class="design-hero__cta">
+            <a href="#works" class="design-btn" id="hero-design-cta" data-hover>View Works →</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- § 6 — SELECTED WORKS -->
+      <section id="works" class="design-section" aria-label="Selected works">
+        <div class="design-section__header">
+          <span class="design-label-small">Selected Works</span>
+          <h2 class="design-section__title">The<br/><em>Craft.</em></h2>
+        </div>
+
+        <div class="design-works-grid" role="list">
+          <a href="#" class="design-project-card" id="proj-nexus" data-hover role="listitem" aria-label="Nexus Dashboard — Web Development">
+            <div class="design-project-card__img-wrap">
+              <img src="assets/images/project_dashboard.png" alt="Nexus Dashboard project" class="design-project-card__img" loading="lazy" />
             </div>
-            <div class="project-card__info">
-              <p class="project-card__name">Nexus Dashboard</p>
-              <p class="project-card__type">Web Development</p>
+            <div class="design-project-card__info">
+              <p class="design-project-card__name">Nexus Dashboard</p>
+              <p class="design-project-card__type">Web Development</p>
             </div>
-            <div class="project-card__arrow" aria-hidden="true">
-              <svg viewBox="0 0 12 12" fill="none">
-                <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.2"/>
-              </svg>
+          </a>
+
+          <a href="#" class="design-project-card" id="proj-forma" data-hover role="listitem" aria-label="Forma App — Mobile Design">
+            <div class="design-project-card__img-wrap">
+              <img src="assets/images/project_mobile_app.png" alt="Forma App project" class="design-project-card__img" loading="lazy" />
+            </div>
+            <div class="design-project-card__info">
+              <p class="design-project-card__name">Forma App</p>
+              <p class="design-project-card__type">Mobile Design</p>
+            </div>
+          </a>
+
+          <a href="#" class="design-project-card" id="proj-branding" data-hover role="listitem" aria-label="Brand Identity — Branding">
+            <div class="design-project-card__img-wrap">
+              <img src="assets/images/project_branding.png" alt="Brand Identity project" class="design-project-card__img" loading="lazy" />
+            </div>
+            <div class="design-project-card__info">
+              <p class="design-project-card__name">Brand Identity</p>
+              <p class="design-project-card__type">Branding &amp; Identity</p>
+            </div>
+          </a>
+
+          <a href="#" class="design-project-card" id="proj-arca" data-hover role="listitem" aria-label="Arca Store — E-Commerce">
+            <div class="design-project-card__img-wrap">
+              <img src="assets/images/project_ecommerce.png" alt="Arca Store project" class="design-project-card__img" loading="lazy" />
+            </div>
+            <div class="design-project-card__info">
+              <p class="design-project-card__name">Arca Store</p>
+              <p class="design-project-card__type">E-Commerce</p>
+            </div>
+          </a>
+
+          <a href="#" class="design-project-card design-project-card--wide" id="proj-motion" data-hover role="listitem" aria-label="Web App — Product Design">
+            <div class="design-project-card__img-wrap">
+              <img src="assets/images/project_web_app.png" alt="Web App project" class="design-project-card__img" loading="lazy" />
+            </div>
+            <div class="design-project-card__info">
+              <p class="design-project-card__name">Cascade Web App</p>
+              <p class="design-project-card__type">Product Design &amp; Development</p>
             </div>
           </a>
         </div>
+      </section>
 
-        <!-- Col 2 -->
-        <div class="works-grid__col" role="listitem">
-          <a href="works.html" class="project-card" id="project-forma" data-hover aria-label="Forma App — Mobile Design project">
-            <div class="project-card__img-wrap">
-              <img src="assets/images/project_mobile_app.png" alt="Forma App project" class="project-card__img" loading="lazy" />
-            </div>
-            <div class="project-card__info">
-              <p class="project-card__name">Forma App</p>
-              <p class="project-card__type">Mobile Design</p>
-            </div>
-            <div class="project-card__arrow" aria-hidden="true">
-              <svg viewBox="0 0 12 12" fill="none">
-                <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.2"/>
-              </svg>
-            </div>
-          </a>
+      <!-- § 7 — ABOUT (design side) -->
+      <section id="about-design" class="design-section design-about" aria-label="About the designer">
+        <div class="design-about__inner">
+          <div class="design-about__left">
+            <span class="design-label-small">About</span>
+            <h2 class="design-about__title">
+              Crafting experiences<br/>
+              that <em>feel.</em>
+            </h2>
+            <p class="design-about__bio design-scroll-reveal">
+              I'm a designer and creative developer who believes the best digital experiences are the ones that feel inevitable — like they couldn't have been any other way. I work at the intersection of aesthetics and function, building things that leave a mark.
+            </p>
+            <p class="design-about__bio design-scroll-reveal">
+              When I'm not breaking systems, I'm building them beautifully.
+            </p>
+          </div>
+          <div class="design-about__right">
+            <img src="assets/images/about_portrait.png" alt="Portrait" class="design-about__img" loading="lazy" />
+          </div>
+        </div>
+      </section>
+
+      <!-- § 8 — CONTACT -->
+      <section id="contact" class="design-section design-contact" aria-label="Contact">
+        <div class="design-contact__inner">
+          <span class="design-label-small">Contact</span>
+          <h2 class="design-contact__title">
+            Let's build<br/>something<br/><em>unforgettable.</em>
+          </h2>
+
+          <div class="design-contact__links">
+            <a href="mailto:hello@example.com" class="design-contact__link" id="contact-email" data-hover>
+              <span class="design-contact__link-label">Email</span>
+              <span class="design-contact__link-value">hello@example.com</span>
+              <span class="design-contact__link-arrow">↗</span>
+            </a>
+            <a href="https://github.com/yourname" class="design-contact__link" id="contact-github" data-hover target="_blank" rel="noopener noreferrer">
+              <span class="design-contact__link-label">GitHub</span>
+              <span class="design-contact__link-value">github.com/yourname</span>
+              <span class="design-contact__link-arrow">↗</span>
+            </a>
+            <a href="https://linkedin.com/in/yourname" class="design-contact__link" id="contact-linkedin" data-hover target="_blank" rel="noopener noreferrer">
+              <span class="design-contact__link-label">LinkedIn</span>
+              <span class="design-contact__link-value">linkedin.com/in/yourname</span>
+              <span class="design-contact__link-arrow">↗</span>
+            </a>
+            <a href="https://twitter.com/yourhandle" class="design-contact__link" id="contact-twitter" data-hover target="_blank" rel="noopener noreferrer">
+              <span class="design-contact__link-label">Twitter</span>
+              <span class="design-contact__link-value">@yourhandle</span>
+              <span class="design-contact__link-arrow">↗</span>
+            </a>
+          </div>
         </div>
 
-        <!-- Col 3 -->
-        <div class="works-grid__col" role="listitem">
-          <a href="works.html" class="project-card" id="project-arca" data-hover aria-label="Arca Store — E-Commerce project">
-            <div class="project-card__img-wrap">
-              <img src="assets/images/project_ecommerce.png" alt="Arca Store project" class="project-card__img" loading="lazy" />
-            </div>
-            <div class="project-card__info">
-              <p class="project-card__name">Arca Store</p>
-              <p class="project-card__type">E-Commerce</p>
-            </div>
-            <div class="project-card__arrow" aria-hidden="true">
-              <svg viewBox="0 0 12 12" fill="none">
-                <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.2"/>
-              </svg>
-            </div>
-          </a>
-        </div>
+        <footer class="design-footer" role="contentinfo">
+          <p class="design-footer__copy">&copy; 2026 Y—N. All rights reserved.</p>
+          <span class="design-footer__initials">Y—N</span>
+        </footer>
+      </section>
 
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════
-         INSIGHTS DIVIDER
-    ════════════════════════════════════════════ -->
-    <div class="divider-bar" style="margin-top: calc(var(--pad-y))" aria-hidden="true">
-      <span class="section-label">From<br/>the desk</span>
-      <div class="divider-bar__line"></div>
-      <div class="divider-bar__label">
-        <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-          <path d="M1 9L9 1M9 1H3M9 1V7" stroke="currentColor" stroke-width="1.2"/>
-        </svg>
-        Insights
-      </div>
-      <div class="divider-bar__line"></div>
-      <div class="divider-bar__date">
-        <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-          <path d="M1 1L9 9M9 9H3M9 9V3" stroke="currentColor" stroke-width="1.2"/>
-        </svg>
-        Narrative &amp; Notes
-      </div>
     </div>
-
-    <!-- ═══════════════════════════════════════
-         INSIGHTS
-    ════════════════════════════════════════════ -->
-    <section class="insights-section" id="insights" aria-label="Recent insights">
-      <h2 class="insights-heading">
-        Recent <em>insights</em><br/>and notes
-      </h2>
-
-      <div class="insights-grid" role="list">
-
-        <article class="insight-card" id="insight-1" role="listitem">
-          <div class="insight-card__img-wrap">
-            <img src="assets/images/project_branding.png" alt="Article about design systems" class="insight-card__img" loading="lazy" />
-          </div>
-          <div class="insight-card__body">
-            <span class="insight-card__plus">+</span>
-            <h3 class="insight-card__title">Why design systems fail — and how to fix them</h3>
-            <p class="insight-card__meta">5m read · Mon 9 March '26 · Author: You</p>
-          </div>
-        </article>
-
-        <article class="insight-card" id="insight-2" role="listitem">
-          <div class="insight-card__img-wrap">
-            <img src="assets/images/project_web_app.png" alt="Article about web performance" class="insight-card__img" loading="lazy" />
-          </div>
-          <div class="insight-card__body">
-            <span class="insight-card__plus">+</span>
-            <h3 class="insight-card__title">The hidden cost of slow web apps</h3>
-            <p class="insight-card__meta">4m read · Fri 20 Feb '26 · Author: You</p>
-          </div>
-        </article>
-
-        <article class="insight-card" id="insight-3" role="listitem">
-          <div class="insight-card__img-wrap">
-            <img src="assets/images/project_mobile_app.png" alt="Article about mobile design" class="insight-card__img" loading="lazy" />
-          </div>
-          <div class="insight-card__body">
-            <span class="insight-card__plus">+</span>
-            <h3 class="insight-card__title">Presence as a brand cornerstone</h3>
-            <p class="insight-card__meta">3m read · Fri 9 Jan '26 · Author: You</p>
-          </div>
-        </article>
-
-        <article class="insight-card" id="insight-4" role="listitem">
-          <div class="insight-card__img-wrap">
-            <img src="assets/images/hero_bg.png" alt="Article about brand building" class="insight-card__img" loading="lazy" />
-          </div>
-          <div class="insight-card__body">
-            <span class="insight-card__plus">+</span>
-            <h3 class="insight-card__title">How I approach every new project</h3>
-            <p class="insight-card__meta">5m read · Fri 5 Dec '25 · Author: You</p>
-          </div>
-        </article>
-
-      </div>
-    </section>
+    <!-- /design-side -->
 
   </main>
 
-  <!-- ═══════════════════════════════════════
-       FOOTER
-  ════════════════════════════════════════════ -->
-  <footer class="footer" id="footer" role="contentinfo">
-    <div class="footer__left">
-      <p class="footer__tagline">
-        Let's build<br/>
-        something<br/>
-        <em>unforgettable.</em>
-      </p>
-      <a href="contact.html" class="footer__cta-link" id="footer-contact-cta">
-        Get in touch
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-          <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.2"/>
-        </svg>
-      </a>
-    </div>
+  <!-- Three.js CDN (for Dither backgrounds) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
-    <div class="footer__right">
-      <nav class="footer__nav" aria-label="Footer navigation">
-        <a href="works.html" class="footer__nav-link" id="footer-works">Works</a>
-        <a href="about.html" class="footer__nav-link" id="footer-about">About</a>
-        <a href="contact.html" class="footer__nav-link" id="footer-contact">Contact</a>
-      </nav>
-      <div class="footer__socials">
-        <a href="https://github.com" class="footer__social" id="footer-github" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="https://linkedin.com" class="footer__social" id="footer-linkedin" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a href="https://twitter.com" class="footer__social" id="footer-twitter" target="_blank" rel="noopener noreferrer">Twitter</a>
-      </div>
-    </div>
+  <!-- GSAP via CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-    <div class="footer__bottom">
-      <p class="footer__copy">© 2026 [Your Name]. All rights reserved.</p>
-      <span class="footer__initials">Y—N</span>
-    </div>
-  </footer>
+  <!-- Dither + animations (must be after Three.js and GSAP) -->
+  <script src="js/dither.js"></script>
+  <script src="js/animations.js"></script>
 
-  <!-- Scripts -->
-  <script src="js/clock.js"></script>
-  <script src="js/transitions.js"></script>
-  <script src="js/cursor.js"></script>
-
-  <script>
-    // Update hero date
-    const heroDate = document.getElementById('hero-date');
-    if (heroDate) {
-      const now = new Date();
-      heroDate.textContent = now.getFullYear() + '—Future';
-    }
-
-    // Nav scroll behavior — switch to dark when over hero
-    (function() {
-      const nav = document.getElementById('main-nav');
-      const hero = document.getElementById('hero');
-      if (!nav || !hero) return;
-      const obs = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
-            nav.classList.add('nav--dark');
-          } else {
-            nav.classList.remove('nav--dark');
-          }
-        });
-      }, { threshold: 0.1 });
-      obs.observe(hero);
-    })();
-  </script>
+  <!-- Single combined script -->
+  <script src="js/main.js"></script>
 
 </body>
 </html>

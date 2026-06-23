@@ -2,53 +2,5 @@
 
 A personal portfolio website built with vanilla HTML, CSS, and JavaScript — deployed on Vercel.
 
-## Pages
-
-| Page | Description |
-|------|-------------|
-| `index.html` | Home / landing page with hero section and featured projects |
-| `works.html` | Full project gallery |
-| `about.html` | Bio and skills |
-| `contact.html` | Contact links and social media |
-
-## Project Structure
-
-```
-portolah/
-├── index.html          # Home page
-├── about.html          # About page
-├── works.html          # Works/portfolio page
-├── contact.html        # Contact page
-│
-├── css/
-│   ├── reset.css       # CSS reset / base normalization
-│   └── style.css       # Main styles
-│
-├── js/
-│   ├── clock.js        # Live clock component
-│   ├── cursor.js       # Custom cursor effect
-│   └── transitions.js  # Page transition animations
-│
-├── assets/
-│   └── images/         # Project screenshots and page imagery
-│
-├── vercel.json         # Vercel deployment config (clean URLs)
-├── skills-lock.json    # Vercel agent skills config
-└── package.json        # Node dev dependencies
-```
-
-## Getting Started
-
-No build step required — this is a static site. Simply open any `.html` file in a browser, or serve locally:
-
-```bash
-npx serve .
-```
-
-## Deployment
-
-This project is configured for [Vercel](https://vercel.com) with clean URLs enabled (`/about` instead of `/about.html`).
-
-```bash
-vercel deploy
-```
+## first ever website
+nothin much to say but, it is what it is.
