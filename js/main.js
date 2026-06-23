@@ -385,7 +385,9 @@
     gsap.set('.gate__content--left',  { x: -50, opacity: 0 });
     gsap.set('.gate__content--right', { x:  50, opacity: 0 });
 
-    let lastSide = null; // tracks current hover state
+    let lastSide   = null; // tracks current hover state
+    let idleTimer  = null; // 3.5s idle timer
+    const IDLE_MS  = 3500;
 
     // ── Activate left (Design) ──
     function activateLeft() {
@@ -427,7 +429,7 @@
       });
     }
 
-    // ── Reset (cursor leaves gate) ──
+    // ── Reset (cursor leaves gate OR idle timer fires) ──
     function resetGate() {
       if (lastSide === null) return;
       lastSide = null;
@@ -444,16 +446,32 @@
       });
     }
 
+    // ── Idle timer helpers ──
+    function scheduleIdle() {
+      clearTimeout(idleTimer);
+      idleTimer = setTimeout(resetGate, IDLE_MS);
+    }
+
+    function cancelIdle() {
+      clearTimeout(idleTimer);
+    }
+
     // ── Mousemove detection ──
     gate.addEventListener('mousemove', e => {
+      cancelIdle(); // reset idle timer on every move
       if (e.clientX < window.innerWidth / 2) {
         activateLeft();
       } else {
         activateRight();
       }
+      scheduleIdle(); // start fresh 3.5s countdown
     });
 
-    gate.addEventListener('mouseleave', resetGate);
+    // On mouse leave: start the idle timer so it fires 3.5s after leaving
+    gate.addEventListener('mouseleave', () => {
+      resetGate();
+      cancelIdle(); // leaving resets immediately, no need for idle delay
+    });
 
     // ── Touch support (mobile — tap left/right half) ──
     gateLeft.addEventListener('touchstart', e => {
@@ -513,11 +531,11 @@
       });
     }
 
-    // Dev hero — grayscale dither
+    // Dev hero — rgba(86,86,86) grayscale dither (matches DevTools screenshot)
     const devCanvas = document.getElementById('dither-dev');
     if (devCanvas) {
       initDither(devCanvas, {
-        waveColor: [0.5, 0.5, 0.5],  // neutral grey
+        waveColor: [0.337, 0.337, 0.337],  // rgba(86,86,86) normalized
         colorNum: 4,
         waveAmplitude: 0.3,
         waveFrequency: 3,

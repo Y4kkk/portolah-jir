@@ -4,13 +4,14 @@
    Side 2: Designer / Creative — Vibrant Purple, Editorial
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Space+Mono:wght@400;700&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap');
 
 /* ============================================================
    SHARED DESIGN TOKENS
    ============================================================ */
 :root {
-  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-display: 'Clash Display', 'DM Sans', system-ui, sans-serif;
   --font-body:    'DM Sans', system-ui, sans-serif;
   --font-mono:    'Space Mono', 'Courier New', monospace;
 
@@ -807,10 +808,11 @@ img { display: block; max-width: 100%; }
 .design-hero__title {
   font-family: var(--font-display);
   font-size: clamp(3.5rem, 9vw, 10rem);
-  font-style: italic;
+  font-style: normal;
+  font-weight: 700;
   color: var(--des-text);
   line-height: 0.92;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.04em;
   max-width: 14ch;
   /* Initial hidden state — GSAP animates in */
   opacity: 0;
@@ -820,6 +822,7 @@ img { display: block; max-width: 100%; }
 
 .design-hero__title em {
   font-style: normal;
+  font-weight: 700;
   color: transparent;
   -webkit-text-stroke: 1px rgba(221, 219, 216, 0.38);
 }
@@ -930,10 +933,11 @@ img { display: block; max-width: 100%; }
 
 .design-section__title {
   font-family: var(--font-display);
-  font-style: italic;
+  font-style: normal;
+  font-weight: 700;
   font-size: clamp(2.5rem, 6vw, 6rem);
   line-height: 0.95;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.04em;
   color: var(--des-text);
 }
 
@@ -1020,10 +1024,11 @@ img { display: block; max-width: 100%; }
 
 .design-about__title {
   font-family: var(--font-display);
-  font-style: italic;
+  font-style: normal;
+  font-weight: 700;
   font-size: clamp(2rem, 4vw, 3.5rem);
   line-height: 1.12;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.04em;
   color: var(--des-text);
   margin: 1.5rem 0 2rem;
 }
@@ -1061,16 +1066,18 @@ img { display: block; max-width: 100%; }
 
 .design-contact__title {
   font-family: var(--font-display);
-  font-style: italic;
+  font-style: normal;
+  font-weight: 700;
   font-size: clamp(3rem, 7vw, 7.5rem);
   line-height: 0.94;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.04em;
   color: var(--des-text);
   margin: 1.5rem 0 4rem;
 }
 
 .design-contact__title em {
   font-style: normal;
+  font-weight: 700;
   color: transparent;
   -webkit-text-stroke: 1px rgba(221, 219, 216, 0.32);
 }
@@ -1254,10 +1261,10 @@ img { display: block; max-width: 100%; }
     linear-gradient(135deg, rgba(109, 40, 217, 0.3) 0%, transparent 60%);
 }
 
-/* Dev overlay: dark purple tint, low-key — B&W accent, not full color */
+/* Dev overlay: exact gray rgba(86,86,86) from DevTools screenshot */
 .gate__overlay--dev {
   background:
-    radial-gradient(ellipse at 65% 50%, rgba(45, 27, 78, 0.6)  0%, rgba(20, 10, 40, 0.8) 60%, transparent 85%),
+    radial-gradient(ellipse at 65% 50%, rgba(86, 86, 86, 0.6) 0%, rgba(0, 0, 0, 0.8) 60%, transparent 85%),
     linear-gradient(135deg, transparent 40%, rgba(30, 10, 60, 0.4) 100%);
 }
 
@@ -1315,18 +1322,20 @@ img { display: block; max-width: 100%; }
   color: rgba(255, 255, 255, 0.45);
 }
 
-/* Design heading — italic serif, elegant */
+/* Design heading — Clash Display geometric, weight 700 */
 .gate__heading--design {
   font-family: var(--font-display);
-  font-style: italic;
+  font-style: normal;
+  font-weight: 700;
   font-size: clamp(2.5rem, 6vw, 6rem);
   line-height: 0.96;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.04em;
   color: #E8E6F0;
 }
 
 .gate__heading--design em {
   font-style: normal;
+  font-weight: 700;
   color: transparent;
   -webkit-text-stroke: 1.5px rgba(232, 230, 240, 0.55);
 }
