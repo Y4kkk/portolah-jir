@@ -18,8 +18,26 @@
 
   gsap.registerPlugin(ScrollTrigger);
 
-  // ── 1. Page Fade-in ───────────────────────────────────────
-  document.body.classList.add('page-loaded');
+  // ── 1. Loading Screen (2s auto-dismiss) ─────────────────
+  (function initLoadingScreen() {
+    const ls = document.getElementById('loading-screen');
+    if (!ls) {
+      document.body.classList.add('page-loaded');
+      return;
+    }
+
+    // Dismiss after 2 seconds
+    setTimeout(() => {
+      ls.classList.add('loading-screen--done');
+      document.body.classList.add('page-loaded');
+
+      // Remove from DOM after transition completes (0.6s)
+      setTimeout(() => ls.remove(), 700);
+
+      // Start terminal boot sequence now that page is revealed
+      startTerminalSequence();
+    }, 2000);
+  })();
 
   // ── 2. Live Clock ─────────────────────────────────────────
   (function initClock() {
@@ -181,7 +199,7 @@
       }
     }
 
-    setTimeout(tick, 600); // brief pause before boot starts
+    setTimeout(tick, 300); // brief pause before boot starts
   }
 
   function animateDevHero() {
@@ -195,21 +213,21 @@
   }
 
   // Set initial position for the title lines (GSAP will animate from this)
-  // Opacity starts at 0; DecryptedText will flip to 1 per-element before scrambling
   gsap.set('.dev-hero__title-line', { opacity: 0, x: -50 });
 
-  // Chain: terminal → slide-in → decrypted-text scramble
-  runTerminal(() => {
-    animateDevHero();
-    // After slide-in delay, start the scramble
-    setTimeout(() => {
-      if (typeof initDecryptedText === 'function') {
-        // Reset lines to visible so DecryptedText can scramble them
-        gsap.set('.dev-hero__title-line', { opacity: 1, x: 0 });
-        initDecryptedText('.dev-hero__title-line');
-      }
-    }, 800);
-  });
+  // startTerminalSequence is called AFTER loading screen dismisses
+  function startTerminalSequence() {
+    // Chain: terminal → slide-in → decrypted-text scramble
+    runTerminal(() => {
+      animateDevHero();
+      setTimeout(() => {
+        if (typeof initDecryptedText === 'function') {
+          gsap.set('.dev-hero__title-line', { opacity: 1, x: 0 });
+          initDecryptedText('.dev-hero__title-line');
+        }
+      }, 800);
+    });
+  }
 
   // ── 7. Transition Zone ────────────────────────────────────
 
@@ -221,26 +239,51 @@
       trigger: '#transition-zone',
       start: 'top bottom',
       end: 'bottom top',
-      scrub: true,
+      scrub: 1.2,
     },
   });
 
-  // Fade/rise the center label when zone reaches center
-  ScrollTrigger.create({
-    trigger: '#transition-zone',
-    start: 'top 55%',
-    onEnter() {
-      gsap.to('.tz__content', {
-        opacity: 1,
-        y: 0,
-        duration: 1.1,
-        ease: 'power3.out',
-      });
-    },
-    onLeaveBack() {
-      gsap.to('.tz__content', { opacity: 0, y: 24, duration: 0.4 });
+  // Fade/rise the center label — toggles in/out on scroll up & down
+  gsap.fromTo('.tz__content',
+    { opacity: 0, y: 24 },
+    {
+      opacity: 1, y: 0,
+      duration: 1.3,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '#transition-zone',
+        start: 'top 55%',
+        toggleActions: 'play none none reverse',
+      },
+    }
+  );
+
+  // Seamless border-bleed: dev-side fades out at bottom as transition zone enters
+  gsap.to('#dev-side', {
+    opacity: 0.85,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '#transition-zone',
+      start: 'top 80%',
+      end: 'top 20%',
+      scrub: 1.2,
     },
   });
+
+  // Design-side fades in as transition zone exits
+  gsap.fromTo('#design-side',
+    { opacity: 0.85 },
+    {
+      opacity: 1,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '#transition-zone',
+        start: 'bottom 80%',
+        end: 'bottom 20%',
+        scrub: 1.2,
+      },
+    }
+  );
 
   // ── 8. Design Hero Entrance ───────────────────────────────
   gsap.set('.design-hero__title', { y: -40 });
@@ -257,6 +300,15 @@
         ease: 'power3.out',
       });
     },
+    onLeaveBack() {
+      gsap.to('.design-hero__title', {
+        opacity: 0,
+        filter: 'blur(14px)',
+        y: -40,
+        duration: 0.6,
+        ease: 'power3.in',
+      });
+    },
   });
 
   // ── 9. Cert Cards ─────────────────────────────────────────
@@ -267,7 +319,10 @@
       stagger: 0.12,
       duration: 0.95,
       ease: 'power3.out',
-      scrollTrigger: { trigger: '#certs', start: 'top 72%' },
+      scrollTrigger: {
+        trigger: '#certs', start: 'top 72%',
+        toggleActions: 'play none none reverse',
+      },
     }
   );
 
@@ -279,7 +334,10 @@
       stagger: 0.04,
       duration: 0.5,
       ease: 'back.out(1.4)',
-      scrollTrigger: { trigger: '#skills', start: 'top 72%' },
+      scrollTrigger: {
+        trigger: '#skills', start: 'top 72%',
+        toggleActions: 'play none none reverse',
+      },
     }
   );
 
@@ -291,7 +349,10 @@
       stagger: 0.1,
       duration: 0.7,
       ease: 'power3.out',
-      scrollTrigger: { trigger: '#skills', start: 'top 75%' },
+      scrollTrigger: {
+        trigger: '#skills', start: 'top 75%',
+        toggleActions: 'play none none reverse',
+      },
     }
   );
 
@@ -303,7 +364,10 @@
       stagger: 0.14,
       duration: 0.9,
       ease: 'power3.out',
-      scrollTrigger: { trigger: '#ctf', start: 'top 72%' },
+      scrollTrigger: {
+        trigger: '#ctf', start: 'top 72%',
+        toggleActions: 'play none none reverse',
+      },
     }
   );
 
@@ -315,7 +379,10 @@
       stagger: 0.1,
       duration: 1.0,
       ease: 'power3.out',
-      scrollTrigger: { trigger: '#works', start: 'top 72%' },
+      scrollTrigger: {
+        trigger: '#works', start: 'top 72%',
+        toggleActions: 'play none none reverse',
+      },
     }
   );
 
@@ -326,7 +393,10 @@
       opacity: 1, y: 0, filter: 'blur(0px)',
       duration: 1.1,
       ease: 'power3.out',
-      scrollTrigger: { trigger: '#about-design', start: 'top 72%' },
+      scrollTrigger: {
+        trigger: '#about-design', start: 'top 72%',
+        toggleActions: 'play none none reverse',
+      },
     }
   );
 
@@ -340,7 +410,10 @@
       stagger: 0.1,
       duration: 0.8,
       ease: 'power3.out',
-      scrollTrigger: { trigger: '#contact', start: 'top 75%' },
+      scrollTrigger: {
+        trigger: '#contact', start: 'top 75%',
+        toggleActions: 'play none none reverse',
+      },
     }
   );
 
@@ -356,7 +429,10 @@
         opacity: 1, y: 0,
         duration: 1.0,
         ease: 'power3.out',
-        scrollTrigger: { trigger: header, start: 'top 78%' },
+        scrollTrigger: {
+          trigger: header, start: 'top 78%',
+          toggleActions: 'play none none reverse',
+        },
       }
     );
   });
@@ -386,15 +462,14 @@
     gsap.set('.gate__content--right', { x:  50, opacity: 0 });
 
     let lastSide   = null; // tracks current hover state
-    let idleTimer  = null; // 3.5s idle timer
-    const IDLE_MS  = 3500;
+    let idleTimer  = null; // idle timer
+    const IDLE_MS  = 2000; // 2s idle before dimming
 
     // ── Activate left (Design) ──
     function activateLeft() {
       if (lastSide === 'left') return;
       lastSide = 'left';
-
-      gate.classList.remove('gate--hovered-right');
+      gate.classList.remove('gate--hovered-right', 'gate--idle');
       gate.classList.add('gate--hovered-left');
 
       // Slide in left content
@@ -402,10 +477,10 @@
         x: 0, opacity: 1,
         duration: 0.7, ease: 'power3.out',
       });
-      // Push right content away
+      // Dim (not hide) right content — opacity 0.35 so text still ghosted/visible
       gsap.to('.gate__content--right', {
-        x: 50, opacity: 0,
-        duration: 0.35, ease: 'power3.in',
+        x: 20, opacity: 0.35,
+        duration: 0.4, ease: 'power3.in',
       });
     }
 
@@ -413,8 +488,7 @@
     function activateRight() {
       if (lastSide === 'right') return;
       lastSide = 'right';
-
-      gate.classList.remove('gate--hovered-left');
+      gate.classList.remove('gate--hovered-left', 'gate--idle');
       gate.classList.add('gate--hovered-right');
 
       // Slide in right content
@@ -422,28 +496,37 @@
         x: 0, opacity: 1,
         duration: 0.7, ease: 'power3.out',
       });
-      // Push left content away
+      // Dim (not hide) left content — opacity 0.35 so text still ghosted/visible
       gsap.to('.gate__content--left', {
-        x: -50, opacity: 0,
-        duration: 0.35, ease: 'power3.in',
+        x: -20, opacity: 0.35,
+        duration: 0.4, ease: 'power3.in',
       });
     }
 
     // ── Reset (cursor leaves gate OR idle timer fires) ──
+    // Instead of opacity: 0, use a low opacity so content stays subtly visible
     function resetGate() {
       if (lastSide === null) return;
       lastSide = null;
 
       gate.classList.remove('gate--hovered-left', 'gate--hovered-right');
+      gate.classList.add('gate--idle');
 
+      // Dim both sides to low opacity (not fully hidden) — clearly visible ghost
       gsap.to('.gate__content--left', {
-        x: -50, opacity: 0,
-        duration: 0.4, ease: 'power3.in',
+        x: -20, opacity: 0.35,
+        duration: 0.5, ease: 'power3.in',
       });
       gsap.to('.gate__content--right', {
-        x: 50, opacity: 0,
-        duration: 0.4, ease: 'power3.in',
+        x:  20, opacity: 0.35,
+        duration: 0.5, ease: 'power3.in',
       });
+
+      // After a pause, remove idle class so a fresh hover reactivates cleanly
+      setTimeout(() => {
+        gate.classList.remove('gate--idle');
+        lastSide = null;
+      }, 600);
     }
 
     // ── Idle timer helpers ──
@@ -467,10 +550,10 @@
       scheduleIdle(); // start fresh 3.5s countdown
     });
 
-    // On mouse leave: start the idle timer so it fires 3.5s after leaving
+    // On mouse leave: dim (not hide), cancel idle
     gate.addEventListener('mouseleave', () => {
       resetGate();
-      cancelIdle(); // leaving resets immediately, no need for idle delay
+      cancelIdle();
     });
 
     // ── Touch support (mobile — tap left/right half) ──
@@ -484,33 +567,53 @@
       activateRight();
     }, { passive: false });
 
-    // ── Click to scroll to respective world ──
-    function scrollToSection(id) {
+    // ── Click to scroll: GSAP cinematic exit then scroll ──
+    function enterWorld(id, accentColor) {
       const target = document.getElementById(id);
       if (!target) return;
+
       const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 52;
-      const top  = target.getBoundingClientRect().top + window.scrollY - navH;
-      window.scrollTo({ top, behavior: 'smooth' });
+
+      // Freeze pointer events during transition
+      gate.style.pointerEvents = 'none';
+
+      // 1. Expand the clicked half to full brightness, blur out the other
+      gsap.timeline()
+        .to(gate, {
+          opacity: 0,
+          duration: 0.55,
+          ease: 'power2.in',
+          onComplete() {
+            // Instant scroll to target (gate is invisible)
+            const top = target.getBoundingClientRect().top + window.scrollY - navH;
+            window.scrollTo({ top, behavior: 'instant' });
+
+            // Fade gate back in (it stays in DOM for scroll-back navigation)
+            gsap.set(gate, { opacity: 1 });
+            gate.style.pointerEvents = '';
+          }
+        });
     }
 
-    gateLeft.addEventListener('click', () => scrollToSection('design-hero'));
-    gateRight.addEventListener('click', () => scrollToSection('dev-hero'));
+    gateLeft.addEventListener('click',  () => enterWorld('design-hero', '#7C3AED'));
+    gateRight.addEventListener('click', () => enterWorld('dev-hero',    '#00ff41'));
 
     // ── Keyboard accessibility ──
     gateLeft.addEventListener('keydown', e => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        scrollToSection('design-hero');
+        enterWorld('design-hero', '#7C3AED');
       }
     });
 
     gateRight.addEventListener('keydown', e => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        scrollToSection('dev-hero');
+        enterWorld('dev-hero', '#00ff41');
       }
     });
   })();
+
 
   // ── 18. Dither Backgrounds ────────────────────────────────
   (function initDithers() {

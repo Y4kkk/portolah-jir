@@ -63,12 +63,15 @@ html {
 body {
   min-height: 100vh;
   overflow-x: hidden;
-  opacity: 0;
-  transition: opacity var(--dur-med) var(--ease);
+  /* opacity starts at 1 — the loading-screen overlay handles visual gating.
+     When no loading-screen exists, the page-loaded class is still added by JS. */
+  opacity: 1;
   background: var(--dev-bg);
 }
 
-body.page-loaded { opacity: 1; }
+/* Legacy fade-in path (no loading screen) */
+body.page-loading { opacity: 0; transition: opacity var(--dur-med) var(--ease); }
+body.page-loaded  { opacity: 1; }
 
 a  { text-decoration: none; color: inherit; }
 ul { list-style: none; }
@@ -656,6 +659,17 @@ img { display: block; max-width: 100%; }
   justify-content: center;
 }
 
+/* Seamless bottom bleed: fades into design hero background */
+.transition-zone::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 45%;
+  background: linear-gradient(to bottom, transparent 0%, #060408 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
 /* Purple bottom layer (design side bleeds up) */
 .tz__bg-bottom {
   position: absolute;
@@ -1216,6 +1230,84 @@ img { display: block; max-width: 100%; }
 }
 
 /* ============================================================
+   LOADING SCREEN — Auto-dismiss 2s overlay
+   ============================================================ */
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: all;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.loading-screen.loading-screen--done {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loading-screen__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  animation: ls-enter 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes ls-enter {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.loading-screen__name {
+  font-family: var(--font-mono);
+  font-size: clamp(1.1rem, 3vw, 1.6rem);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.loading-screen__bar {
+  width: clamp(160px, 25vw, 260px);
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  position: relative;
+}
+
+.loading-screen__fill {
+  position: absolute;
+  top: 0; left: 0;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, transparent, #00ff41 50%, rgba(124, 58, 237, 0.8) 100%);
+  animation: ls-fill 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+}
+
+@keyframes ls-fill {
+  0%   { width: 0%; }
+  60%  { width: 80%; }
+  100% { width: 100%; }
+}
+
+.loading-screen__hint {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.2);
+  animation: ls-hint-pulse 1s ease-in-out infinite;
+}
+
+@keyframes ls-hint-pulse {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 1; }
+}
+
+/* ============================================================
    GATE — Interactive Splash Screen
    "Choose your world" — sits before both sides, full 100svh
    ============================================================ */
@@ -1286,13 +1378,13 @@ img { display: block; max-width: 100%; }
 
 /* LEFT hovered → design blooms */
 .gate--hovered-left .gate__overlay--design   { opacity: 1; }
-.gate--hovered-left .gate__half--right        { opacity: 0.12; }
+/* Note: half-level opacity intentionally REMOVED — only content dims via GSAP */
 .gate--hovered-left .gate__center             { opacity: 0; pointer-events: none; }
 .gate--hovered-left .gate__scroll-hint        { opacity: 0; }
 
 /* RIGHT hovered → dev activates */
 .gate--hovered-right .gate__overlay--dev     { opacity: 1; }
-.gate--hovered-right .gate__half--left        { opacity: 0.12; }
+/* Note: half-level opacity intentionally REMOVED — only content dims via GSAP */
 .gate--hovered-right .gate__center            { opacity: 0; pointer-events: none; }
 .gate--hovered-right .gate__scroll-hint       { opacity: 0; }
 
@@ -1309,6 +1401,7 @@ img { display: block; max-width: 100%; }
   gap: 1.1rem;
   /* starts hidden; GSAP sets opacity/x on init */
   will-change: transform, opacity;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .gate__content--left  { align-items: flex-start; }
@@ -1404,6 +1497,12 @@ img { display: block; max-width: 100%; }
   );
   z-index: 3;
   transition: opacity 500ms;
+}
+
+/* Idle state: dim both sides (not full opacity: 0) */
+.gate--idle .gate__content--left,
+.gate--idle .gate__content--right {
+  opacity: 0.2;
 }
 
 .gate--hovered-left .gate__divider,
